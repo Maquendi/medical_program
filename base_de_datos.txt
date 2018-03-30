@@ -1,0 +1,8 @@
+personal(id,cedula,nombre,apellido,role)
+
+paciente(id,cedula,nombre,apellido,fecha_nac,tipo_sangre)
+
+citas(id,fecha,duracion,idPaciente,idAsistente)
+
+visitaPacientes(id,fecha,motivo,comentario,receta_medicamentos,
+fecha_prox_visita)
