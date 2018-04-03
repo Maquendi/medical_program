@@ -1,83 +1,38 @@
-<?php   
-
-  $dato_usuario = $this->session->userdata();
-
-  $doctores = $datos['doctores'];
- 
-  $citas = $datos['citas'];
-   
-  $provincias = $datos['provincias'];
-  
-  $pacientes = $datos['pacientes']; 
-  
-  $CI =& get_instance();
-  
-  $num_citas = "000-101-";
-
-  
-  //var_dump($doctores);
-
-  //$provincias = $this->session->userdata('provincias');
-
-  $userdata['userID'] = $dato_usuario['userID'];
-  $userdata['cedula'] = $dato_usuario['cedula'];
-  $userdata['nombre'] = $dato_usuario['nombre'];
-  $userdata['apellido'] = $dato_usuario['apellido'];
-  $userdata['email'] = $dato_usuario['email'];
-  $userdata['password'] = $dato_usuario['password'];
-  $userdata['role'] = $dato_usuario['role'];
-  $userdata['foto_path'] = $dato_usuario['foto_path'];
-  
-?>
 
 
 
-<style>
-	.contenedor{
-		margin:10px;
-	}
-</style>
-
-
-
- <hr>
- <div class="contenedor">
+<br>
+<h3 style="color: green; font-style: italic;">Calendario De Citas Pendientes</h3>
+<hr>
 <div class="row">
 
-  <div class="col-sm-3">
-  	<div style="height: 100vh;">
-      <ul class="list-group">
-        <li class="list-group-item active"><h4>Citas Recientes</h4></li>
-         <hr>
-         <div class="table" style="width:95%;margin:auto;">
-         <table class="table table-hover" id="table">
-         	<tbody>
-            <?php foreach ($citas as $key => $cita):?>
-             <tr>
-               
-               <td>
-                  
-                      <a href="#">
-                       <?php echo $num_citas.$cita['id_cita']." ".$CI->toString($pacientes,$cita['id_paciente'])." ☺";?>
-                        </a>
-                
-               </td>
-              
-             </tr>
-         		<?php endforeach;?>
-         	</tbody>
-         </table>
-         </div>
-      </ul>
-  	</div>
-  </div> <!-- left column-->
-    
-  <div class="col-sm-6">
+	<div class="col-sm-5" style="margin-left: 5px;">
+      
+      <div id="calendario">
+      	
+      </div>
+   
+
+		<!--aqui va calendario de citas -->
+	</div>
+
+
+
+
+
+
+   <div class="col-sm-1"></div>
+
+
+	
+<!--aqui va detalle de citas.*************************** -->
+
+<div class="col-sm-5">
 
   	<div class="jumbotron" style="padding:3px;">
       <nav aria-label="breadcrumb">
        <ol class="breadcrumb">
-        <li class="breadcrumb-item active" aria-current="page"><h4 style="color:green;">Detalles</h4>
+        <li class="breadcrumb-item active" aria-current="page"><h4 style="color:green;"><a href="#">Imprimir cita</a></h4>
          <small style="color:green"><?php echo $this->session->flashdata('registro_cita');?></small>
         </li>
        </ol>
@@ -151,26 +106,12 @@
 
           <div class="input-group mb-3">
             <div class="input-group-prepend">
-             <span class="input-group-text">Fecha Cita</span>
+             <span class="input-group-text">fecha Inicio</span>
              </div>
-              <input type="date" class="form-control" name="fecha_cita">
+              <input type="text" class="form-control" name="" id="fecha">
            </div>
            
-             <span style="color: red"><?php echo form_error('fecha_cita');?></span>
-           
-
-
-             <div class="input-group mb-3">
-              <div class="input-group-prepend">
-             <span class="input-group-text">Hora Inicio</span>
-             </div>
-              <input type="time" class="form-control" name="hora_inicio">
-              
-           </div>
-           <div>
-             <span style="color: red"><?php echo form_error('hora_inicio');?></span>
-           </div>
-             
+                        
              <!-- Esta input text me me informa sobre el estado de una peticion-->
               <input type="hidden" name="info" id="info">
 
@@ -179,7 +120,7 @@
               <div class="input-group-prepend">
              <span class="input-group-text">Hora final</span>
              </div>
-              <input type="time" class="form-control" name="hora_final">
+              <input type="text" class="form-control" id="hora_final">
              
            </div>
 
@@ -206,7 +147,7 @@
 
             <div class="col-sm-3">
             </div>
-             <textarea style="border-top-color: white; border-right-style: none; border-left-style: none;" class="form-control" rows="2" name="comentario" placeholder="Algun comentario acerca de la cita..."></textarea>
+             <textarea style="border-top-color: white; border-right-style: none; border-left-style: none;" class="form-control" rows="2" name="comentario" placeholder="Algun comentario acerca de la cita..." id="comentario"></textarea>
            </div>
            </div>
    
@@ -214,8 +155,8 @@
 
 
    <!--********************colapsa*********************************-->
-        <div class="collapse" id="colapsa_form">
-         <a href="#" onclick="setEditable();" style="margin-left:85%;">Editar</a>
+        <div class="**collapse**" id="**colapsa_form**">
+         
         <div class="card card-body">
 
        <div class="row">
@@ -262,7 +203,7 @@
            <label>Genero</label>
            
           <select readonly="readonly" class="form-control" name="genero" id="genero">
-            <option selected>seleccione genero</option>
+            <option selected="false">seleccione genero</option>
             <option>M</option>
             <option>F</option>
           </select>
@@ -277,15 +218,7 @@
           </div>
           <div class="col-sm-7">
            <label>Doctor/Doctora</label>
-            <select class="form-control" name="doctor" id="medico">
-            <option selected="false">seleccionar doctor...</option>
-              <?php foreach ($doctores as $key => $doctor){ ?>
-
-                <option><?php echo $doctor['id']."- ".$doctor['nombre']." ".$doctor['apellido'];?></option>
-
-               <?php }?>
-              
-           </select>
+            <input type="text" name="" id="medico" class="form-control">
            <h6 style="color: red"><?php echo form_error("doctor");?></h6>
          </div>
      </div>
@@ -310,12 +243,9 @@
          
          <div class="form-group col-sm-5">
           <label for="inputState">Provincia</label>
-          <select readonly="readonly" id="provincia" name="provincia" class="form-control">
-          <option>elige tu provincia</option>
-          <?php foreach($provincias as $p):?>
-            <option><?php echo $p;?></option>
-            <?php endforeach;?>
-          </select>
+           <input type="text" name="" id="provincia" class="form-control">
+
+
         </div>
 
 
@@ -341,7 +271,7 @@
           <span>Telefono[Home/Movil]</span>
         </div>
         <div class="col-sm-7">
-         <input type="text" readonly="readonly" name="telefono" id="c_telefono" class="form-control" placeholder="Ingresar un numero de Telefono">
+         <input type="text" readonly="readonly" name="telefono" id="telefono" class="form-control" placeholder="Ingresar un numero de Telefono">
         </div>
       </div>
   
@@ -370,38 +300,6 @@
   </div> <!-- middle column-->
 
 
-  <div class="col-sm-3" > <!-- right column-->
-  	<div style="height: 100vh;">
-  		<nav aria-label="breadcrumb">
-           <ol class="breadcrumb">
-           <li class="breadcrumb-item active" aria-current="page">
-            <h5 style="color: green;">Informacion Usuario</h5>
-           </li>
-          </ol>
-        </nav> 
-        
-        <div class="row" style="padding-left: 5px;">
-        <div class="col-sm-6" >
-        	<ul class="list-group">
-             <li class="list-group-item"><?php echo $userdata['nombre']." ".$userdata['apellido'] ?></li>
-             <li class="list-group-item"> <?php echo $userdata['role'] ?>  </li>
-             
-            </ul>
-
-
-        </div>
-        <div class="col-sm-6">
-          <div>
-           <img src="<?php echo $userdata['foto_path'] ?>" width="120px" height="120px"
-           style="border-radius:5px;">		
-          </div>
-        </div>
-  		</div>
-      <hr>
-  	</div>
-  </div>
-</div> 
-</div>
 
 
 
@@ -415,9 +313,193 @@
 
 
 
-<script src="<?php echo base_url("assets/js/js_file.js")?>">
- 
+
+
+
+
+
+
+
+
+</div> 	<!--main row ********************************************** -->
+
+
+
+
+
+
+
+
+
+
+<script>
+
+var citas = <?php echo json_encode($citas)?>;
+
+
+
+ //console.log(citas);
+
+
+
+
+
+
+
+
+    /*   var initialize_calendar;
+
+       initialize_calendar = function()
+       {
+       	 $('#calendario').each(function(){
+       	 	var calendar = $(this);
+       	 	calendar.fullCalendar({
+
+       	 	});
+       	 })
+       };
+
+       $(document).on('turbolinks:load',initialize_calendar);*/
+
+
+
+
+	$(document).ready(function(){
+
+		$('#calendario').fullCalendar({
+          
+               header:{
+                  left:'prev,next today',
+                  center:'title',
+                  right:'month,agendaWeek,agendaDay'
+                },
+                selectable:true,
+                selectHelper:true,
+                editable:true,
+                eventLimit:true,
+
+
+                eventClick: function(event)
+                {   
+                   process(event);
+                 
+                },
+
+
+                viewRender: function(view)
+                { 
+                	$('#calendario').fullCalendar('removeEvents');
+                	$('#calendario').fullCalendar('addEventSource',citas);
+
+                }
+                   
+		});
+	})
+
+
+
+
+
+  function process(datos)
+  {
+       
+     var cedula= document.getElementById('c_cedula');
+     var fecha= document.getElementById('fecha');
+     var h_final= document.getElementById('hora_final');
+     var comentario= document.getElementById('comentario');
+     var nombre= document.getElementById('nombre');
+     var apellido= document.getElementById('apellido');
+     var fecha_nac= document.getElementById('fecha_nac');
+     var email= document.getElementById('email');
+     var tipo_sangre= document.getElementById('tipo_sangre');
+     var fecha_ult_inter= document.getElementById('f_ultima_inter');
+     var genero= document.getElementById('genero');
+     var doctor= document.getElementById('medico');
+     var resumen_hist= document.getElementById('historial_medico');
+     var provincia= document.getElementById('provincia');
+     var calle= document.getElementById('calle');
+     var ciudad= document.getElementById('ciudad');
+     var telefono= document.getElementById('telefono');
+
+     
+     
+     cedula.value = datos['cedula'];
+     fecha.value = datos['start']['_i'];
+     h_final.value = datos['end']['_i'];
+     comentario.value = datos['comentario'];
+     nombre.value = datos['nombre'];
+     apellido.value = datos['apellido'];
+     fecha_nac.value = datos['fecha_nac'];
+     email.value = datos['email'];
+     tipo_sangre.value = datos['tipo_sangre'];
+    // fecha_ult_inter.value = new Date();  // cambiar luego
+     genero.value = datos['genero'];
+     doctor.value = datos['title'];
+     resumen_hist.value = "historial no disponible";
+     provincia.value = datos['provincia'];
+     calle.value = datos['calle'];
+     ciudad.value = datos['ciudad'];
+     telefono.value = datos['telefono'];
+
+
+     
+
+
+
+
+
+
+
+
+
+
+     
+     console.log(datos);
+
+
+  
+
+
+
+
+
+
+
+  }
+
+
+
+
+
+
+ /*
+  
+  $.getScript('/events/new',function(){
+                      
+                      $('#event_date_range').val(moment(start).format("MM/DD/YYYY HH:mm")+'-'+moment(end).format(date_range_picker()));
+
+                       $('.start_hidden').val(moment(start).format("MM/DD/YYYY HH:mm"));
+
+                       $('.end_hidden').val(moment(end).format("MM/DD/YYYY HH:mm"))
+
+                	});
+
+
+
+ */
+
+
+
+
+
 </script>
+
+
+
+
+
+
+
 
 
 </body>

@@ -23,7 +23,6 @@
 
 
 
-
 <body>
 	
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -46,7 +45,7 @@
           Administrar
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Cuentas</a>
+          <a class="dropdown-item" href="<?php echo base_url("index.php/Controlador/modificar_usuario") ?>">Cuentas</a>
           <a class="dropdown-item" href="#">Archivos</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Personal</a>
@@ -59,8 +58,8 @@
     <form class="form-inline my-2 my-lg-0">
       
       
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0"  type="button">Buscar</button>
        
       <div class="col-sm-2">
       <div  class="btn btn-outline-success my-2 my-sm-0">

@@ -4,14 +4,6 @@
  <script src="<?php echo base_url("assets/js/bootstrap.js")?>"></script>
  <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/estilo/style.css")?>"/>
 
-<style type="text/css">
-
-  body{
-
-  	
-  }
-
-</style>
 
 
 <div class="container-fluid bg">
@@ -38,7 +30,7 @@
     <label for="exampleInputPassword1"><h4>Password</h4></label>
     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password">
     <span class="text-danger">
-    	<?php echo form_error('password')  ?>
+    	<?php echo form_error('password');?>
     </span>
   </div>
   <div class="form-check">

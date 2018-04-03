@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title></title>
 
-   
+  
    
    <link rel="stylesheet" type="text/css" href="<?php echo base_url("assets/css/bootstrap.css")?>"/>
      <link rel='stylesheet' href='<?php echo base_url("assets/css/fullcalendar.css");?>' />
@@ -74,14 +74,14 @@
      <div class="col-sm-3">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-          <a class="nav-link" href="#">Agregar Paciente <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="<?php echo base_url("index.php/Controlador/calendario_citas")?>"><h5>Ver Citas Pendiente</h5><span class="sr-only">(current)</span></a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link" href="#">Imprimir Reporte</a>
         </li>
          <li class="nav-item">
-           <a class="nav-link" href="#">Organizar Cita</a>
+           <a class="nav-link" href="<?php echo base_url("index.php/Controlador/entrar") ?>"><h5>Ir a Inicio</h5></a>
           </li>
     </ul>
    </div>
@@ -103,11 +103,6 @@
    </div>
 
  </div>
-
-
-
-
-
 
     <hr>
   </div>

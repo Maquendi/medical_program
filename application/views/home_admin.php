@@ -3,8 +3,14 @@
 
 
  $userData = $this->session->userdata();
-
  
+ $CI =& get_instance();
+  
+ $num_citas = "000-101-";
+ 
+ $citas = $datos['citas'];
+
+
 
 
 
@@ -92,7 +98,7 @@
     		<div class="row">
 
 
-    			<div class="col-sm-8 col-md-8 col-xs-12">
+    			<div class="col-sm-6 col-md-6 col-xs-12">
     				<div class="card">
             
 
@@ -101,7 +107,7 @@
                    <div class="row">
 
                      <div class="col-sm-4">
-                       <h5 style="color: green; font-style: italic;">Administrar Personal</h5>
+                       <h6 style="color: green; font-style: italic;">Administrar Personal</h6>
                      </div>
                   
                      <div class="col-sm-8">
@@ -114,19 +120,71 @@
                </div>
 
               
-              <div id="calendar" style="padding: 15px; display:none;">
+              <div id="calendario" style="padding: 15px; display:none;">
                 <!-- calendario va ahi -->
               </div>
             
+              <div id="lista">
 
-                       <ul class="list-group" id="lista">
-                           <li class="list-group-item">Cras justo odio</li>
-                           <li class="list-group-item">Dapibus ac facilisis in</li>
-                           <li class="list-group-item">Morbi leo risus</li>
-                           <li class="list-group-item">Porta ac consectetur ac</li>
-                           <li class="list-group-item">Vestibulum at eros</li>
-                        </ul>   
+                    <table class="table table-hover" id="table">
+                        <thead>
+                          <th>Num Cita</th>
+                          <th>Paciente</th>
+                          <th>Fecha Creada</th>
+                          <th>Estatus</th>
+                        </thead>
+
+
+                           <tbody>
+                     
+                      <?php for($i=0;$i<count($citas);$i++){?>
+                           <tr>
+
+                           <td>
+                           <a href="<?php echo base_url("index.php/Controlador/view_detail/{$citas[$i]['id_cita']}")?>">
+                           <?php echo $num_citas.$citas[$i]['id_cita'];?>
+                           </a>
+                           </td>
+
+                           <td>
+                           <a href="<?php echo base_url("index.php/Controlador/view_detail/{$citas[$i]['id_cita']}")?>">
+                           <?php echo $citas[$i]['Paciente'];?>
+                           </a>
+                           </td>
+                           
+                           <td>
+                           <a href="<?php echo base_url("index.php/Controlador/view_detail/{$citas[$i]['id_cita']}")?>">
+                           <?php echo $citas[$i]['hora_registrada'];?>
+                           </a>
+                           </td>
+
+                           <td>
+                           <a href="<?php echo base_url("index.php/Controlador/view_detail/{$citas[$i]['id_cita']}")?>">
+                           <?php echo $citas[$i]['estado'];?>
+                           </a>
+                           </td>
+              
+                           </tr>
+                      <?php } ?>
+                   </tbody>
+         </table>
+                     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                        
+              </div>
                        
             </div>
     			</div>
@@ -215,26 +273,53 @@
 
 
 <script >
-   
-   $(document).ready(function(){
 
-      /* var e = {
-                      title:"primer_evento",
-                      start:"2018-03-30",
-                      end:"2018-04-01 24:00:00",
-                      url:"http://google.com",
-                      backgroundColor:"green",
+   
+  
+   var citas = <?php echo json_encode($datos['citas'])?>;
+   
+
+  
+  
+  $(document).ready(function(){
+
+    $('#calendario').fullCalendar({
+          
+               header:{
+                  left:'prev,next today',
+                  center:'title',
+                  right:'month,agendaWeek,agendaDay'
+                },
+                selectable:true,
+                selectHelper:true,
+                editable:true,
+                eventLimit:true,
+
+
+                eventClick: function(event)
+                {   
+                   //process(event);
+                 
+                },
+
+
+                viewRender: function(view)
+                { 
+                  $('#calendario').fullCalendar('removeEvents');
+                  $('#calendario').fullCalendar('addEventSource',citas);
+
+                }
                    
-                   }*/
+    });
+  })
 
-      $('#calendar').fullCalendar({
-       
-        // events:[]
-      });
+
+
+
+
+
+
   
-   });
-  
-   
  
 
 
@@ -244,14 +329,14 @@
 
   var counter = 2;
   function esconder(){
-    var div = document.getElementById('calendar');
+    var div = document.getElementById('calendario');
     var lista = document.getElementById('lista');
     var btn_cita = document.getElementById('btn_cita');
        
     if(counter%2 == 0){
        div.setAttribute("style","display:block");
        lista.setAttribute("style","display:none");
-       btn_cita.innerHTML = "Esconder Calendario";
+       btn_cita.innerHTML = "Ver Listado";
     }
     else
     {

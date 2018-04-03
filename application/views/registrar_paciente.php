@@ -98,32 +98,46 @@
   </div>
 
 
+ <div class="form-group row">
+
+  <div class="col-sm-6">
   <div class="form-group">
     <div class="form-check">
       <input class="form-check-input" type="checkbox" id="gridCheck">
       <label class="form-check-label" for="gridCheck">
-        Alergico a medicamentos.
+         Alergico a medicamentos.
       </label>
     </div>
+    </div>
   </div>
+
+  
+        <div class="row">
+        <div class="form-group">
+         <div class="col-md-12">
+         <label>Telefono</label>
+         <input class="form-control" type="text" name="telefono" placeholder="Telefono">
+      </div>
+      </div>
+  </div>
+  </div>
+
 
 
 
  <div class="row">
-  <div class="form-group col-md-6">
-  	
   	<div class="form-group col-md-6">
       <label for="inputState">Genero</label>
       <select id="inputState" class="form-control" name="genero" >
-        <option selected>Masculino</option>
-        <option>Femenina</option>
+        <option selected>M</option>
+        <option>F</option>
       </select>
     </div>
+ 
 
-  </div>
-  <div class="form-group col-md-6">
-  	
-  	<div class="form-group col-md-6">
+
+  
+  	<div class="form-group col-md-3">
       <label for="inputState">Tipo de sangre</label>
       <select id="inputState" class="form-control" name="tipo_sangre">
         <option selected>A+</option>
@@ -133,9 +147,9 @@
         <option>O+</option>
       </select>
     </div>
-  	
+
   </div>
-  </div>
+ 
  
   <div class="row">
       <div class="col-md-4">
