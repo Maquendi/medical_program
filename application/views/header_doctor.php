@@ -78,7 +78,7 @@
        </ul>
   	</li>
 
-
+<!--
   	<li><a href="#">Consultas</a>
        <ul>
        	 <li><a href="#">Registrar Consultas</a></li>
@@ -99,7 +99,9 @@
        </ul>
   	</li>
 
-    <li style="margin-left:1.3em"><a href="<?php echo base_url('index.php/Controlador/salir');?>" class="btn btn-outline-success btn-lg">Cerrar Cuenta</a>
+  -->
+
+    <li style="margin-left:18em"><a href="<?php echo base_url('index.php/Controlador/salir');?>" class="btn btn-outline-success btn-lg">Cerrar Cuenta</a>
       
     </li>
   </ul>

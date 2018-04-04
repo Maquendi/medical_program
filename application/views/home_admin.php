@@ -295,14 +295,6 @@
                 editable:true,
                 eventLimit:true,
 
-
-                eventClick: function(event)
-                {   
-                   //process(event);
-                 
-                },
-
-
                 viewRender: function(view)
                 { 
                   $('#calendario').fullCalendar('removeEvents');

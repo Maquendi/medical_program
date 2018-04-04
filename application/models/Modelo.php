@@ -18,7 +18,7 @@ class Modelo extends CI_Model
   	  $this->db->where('email',$email);
   	  $this->db->where('password',$password);
 
-  	  $query = $this->db->get('Personal');
+  	  $query = $this->db->get('personal');
 
   	  if($query->num_rows()>0)
   	  {
@@ -245,14 +245,30 @@ concat(c.fecha_cita,' ',c.hora_inicio) as start, concat(c.fecha_cita,' ',c.hora_
     }
 
 
+
+
+
+public function getMisPacientes($id_doctor)
+{
+  $sql = "select p.id,concat(p.nombre,' ',p.apellido) as paciente,p.fecha_nac,p.genero,p.reg,p.telefono,p.tipo_sangre,p.cedula,p.email,c.fecha,c.comentario_medico from paciente p
+inner join consulta c on c.id_paciente = p.id where c.id_doctor = {$id_doctor}";
+
+  $query = $this->db->query($sql);
+
+  return $query->result_array();
+
 }
 
 
 
+ public function guardar_consulta($consulta)
+ {
+     $this->db->insert('consulta',$consulta);
+     
+ }
 
 
-
-
+}
 
 
 ?>

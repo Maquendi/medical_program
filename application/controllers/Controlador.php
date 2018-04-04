@@ -117,10 +117,14 @@ public function entrar()
      }
      else if($this->session->userdata('role') === 'Doctor')
      {
-
+    
+    $pacientes = $this->Modelo->getMisPacientes($this->session->userdata('userID'));
     $misCitas = $this->Modelo->getMisCitas($this->session->userdata('userID'));
+       
+       $datos = array('citas'=>$misCitas,'pacientes'=>$pacientes);
+
        $this->load->view('header_doctor');
-       $this->load->view('home_doctor',['citas'=>$misCitas]);
+       $this->load->view('home_doctor',['datos'=>$datos]);
        
      }
      else
@@ -594,6 +598,34 @@ public function view_detail($id_cita)
     $this->load->view('header_admin');
     $this->load->view('view_detalle',['cita'=>$cita]);
 }
+
+
+
+public function guardar_consulta()
+{
+  
+  $received = $this->input->post('consulta');
+  
+  $now = new DateTime();
+  $date = $now->format('Y-m-d H:i:s');
+
+
+  $datos = $received.split('/');
+  
+  $consulta['comentario_medico'] = $datos[0];
+  $consulta['id_paciente'] = $datos[1];
+  $consulta['id_doctor'] = $this->db->session->userdata('userID');
+  $consulta['fecha']=$date;
+  
+   //var_dump($consulta);
+  
+     // $this->Modelo->guardar_consulta($consulta);
+
+      // echo "Consulta Registrada Correctamente";
+    
+
+    }
+
 
 
 

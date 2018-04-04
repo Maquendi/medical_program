@@ -26,8 +26,8 @@ $yo = $this->session->userdata();
      <div class="card mb-4">
          <div style="background-color:blue; opacity:.9; padding-left:5px; border-radius:5px;">
          	<p class="card-title">
-         		<h4 style="color:white;">
-         		  Registrar Consulta
+         		<h4 style="color:white; margin-left: 80px;">
+         		  Registrar Una Consulta
          		</h4>
            </p>
           </div>
@@ -46,14 +46,14 @@ $yo = $this->session->userdata();
 
                 <div class="col-md-9">
                 	<div class="input-group form-group">
-                		<input type="text" name="" placeholder="Buscar paciente" class="form-control">
+                		<input type="text" id="campo_buscar" placeholder="Buscar paciente" class="form-control">
                 	</div>
                 </div> 
-
+                 <div style="margin-left: 15px;" id="message"></div>
               </div>
 
 
-              <div class="collapse" id="colapsa_form">
+              <div class="" id="colapsa_form" style="display:none;">
               <div class="card card-body">
               <div class="row">
               <div class="col-sm-3">
@@ -63,7 +63,7 @@ $yo = $this->session->userdata();
                </div>
                 <div class="col-md-9">
                 	<div class="input-group form-group">
-                		<input type="text" name="" placeholder="paciente..." class="form-control">
+                		<input readonly type="text" id="nombre_p" placeholder="paciente..." class="form-control">
                 	</div>
                 </div> 
               </div>
@@ -77,12 +77,12 @@ $yo = $this->session->userdata();
                </div>
                 <div class="col-md-9">
                 	<div class="input-group form-group">
-                		<input type="text" name="" placeholder="apellido" class="form-control">
+                		<input readonly type="text" id="apellido_p" placeholder="apellido" class="form-control">
                 	</div>
                 </div> 
               </div>
 
-
+<!--
               <div class="row">
               <div class="col-sm-3">
                 	<div class="input-group form-group">
@@ -95,7 +95,7 @@ $yo = $this->session->userdata();
                 	</div>
                 </div> 
               </div>
-
+-->
 
               <div class="row">
               <div class="col-sm-3">
@@ -105,7 +105,7 @@ $yo = $this->session->userdata();
                </div>
                 <div class="col-md-9">
                 	<div class="input-group form-group">
-                		<input type="text" name="" placeholder="fecha de nacimiento" class="form-control">
+                		<input readonly type="text" id="nacimiento" placeholder="fecha de nacimiento" class="form-control">
                 	</div>
                 </div> 
               </div>
@@ -114,7 +114,7 @@ $yo = $this->session->userdata();
               
 
 
-
+         <!--
               <div class="row">
               <div class="col-sm-3">
                 	<div class="input-group form-group">
@@ -128,7 +128,7 @@ $yo = $this->session->userdata();
                 </div> 
               </div>
 
-
+     -->
 
 
               
@@ -143,7 +143,7 @@ $yo = $this->session->userdata();
                </div>
                 <div class="col-md-9">
                 	<div class="input-group form-group">
-                		<input type="date" name="" class="form-control">
+                		<input readonly type="date" id="fecha_consulta" class="form-control">
                 	</div>
                 </div> 
               </div>
@@ -152,12 +152,12 @@ $yo = $this->session->userdata();
               <div class="row">
               <div class="col-sm-3">
                 	<div class="input-group form-group">
-                     <label>Detalle</label>
+                     <label>Detalle Diagnostico</label>
                 	</div>
                </div>
                 <div class="col-md-9">
                 	<div class="input-group form-group">
-                		<textarea style="border-right-style:none;border-left-style: none;border-top-style:none;" class="form-control" rows="2" placeholder="comentario ultima Consulta"></textarea>
+                		<textarea id="comment" style="border-right-style:none;border-left-style: none;border-top-style:none;" class="form-control" rows="2" placeholder="comentario ultima Consulta"></textarea>
                 	</div>
                 </div> 
               </div>
@@ -165,15 +165,15 @@ $yo = $this->session->userdata();
 
               <div class="row">
               <div class="col-sm-3">
-                	<div class="input-group form-group">
-                     <label>Nombre</label>
+                	
+                     <label></label>
                 	</div>
                </div>
                 <div class="col-md-9">
                 	<div class="input-group form-group">
-                		<input type="text" name="" placeholder="paciente..." class="form-control">
+                		<button type="button" id="btn_guardar" class="btn-outline-success">Guardar Consulta</button> 
                 	</div>
-                </div> 
+               
               </div>
 
                          
@@ -192,7 +192,7 @@ $yo = $this->session->userdata();
    
     <div class="card">
      <div class="card-body">
-    <h5 class="card-title"><a class="form-control btn-outline-info" href="#" style="text-decoration:none;" >Proximas Visistas</a></h5>
+    <h5 class="card-title"><a class="form-control btn-outline-info" href="#" style="text-decoration:none;" >Agenda de Visitas</a></h5>
     <p class="card-text">
     	
     </p>
@@ -218,7 +218,7 @@ $yo = $this->session->userdata();
    	       <div style="margin:0px; background-color: blue;height:55px; border-radius:4px; padding:0px 0px 1px 0px;">
 
    	       	 <h4><button onclick="display(this);" class="btn btn-primary btn-lg form-control" style="font-size:25px; background-color: blue;" id="btn_pago">
-   	       	 	Pago de Factura
+   	       	 	Cobrar Una Factura
    	       	 </button></4>
 
    	       </div>
@@ -411,8 +411,7 @@ $yo = $this->session->userdata();
          	
          		 <button onclick="display(this);" class="btn btn-primary btn-lg form-control" style="font-size:25px; background-color:blue;" id="btn_calendario">Ver Calendario de Citas
    	            </button>
-   	       	   
-               
+   
              </div>
 
 
@@ -429,6 +428,99 @@ $yo = $this->session->userdata();
         </div>
       </div>
 
+
+
+    <br>
+    <hr>
+     
+     <div class="card mb-4">
+           <div style="background-color:blue;padding:0px 0px 0px 0px; border-radius:4px;">
+          
+
+          
+             <button onclick="display(this);" class="btn btn-primary btn-lg form-control" style="font-size:25px; background-color:blue;" id="btn_agendar_visita">Agendar Una Visita</button>
+   
+             </div>
+
+
+
+       <div style="margin-left:4px; margin-right: 4px;">
+         <div class="card-body">
+          <p class="card-text"></p>
+
+           <div id="agenda" style="display:none;">
+                
+             <div class="row">
+               <div class="input-group form-group">
+               <div class="col-md-4">
+                 <span><h6>Paciente</h6></span>
+               </div>
+               <div class="col-md-8">
+                 <select class="form-control">
+                   <option selected="false">Selecciona Paciente...</option>
+                    <?php for($i=0;$i<count($pacientes);$i++) { ?>
+
+                      <option><?php echo $pacientes[i]->paciente ?></option>
+
+                    <?php } ?>
+                 </select>
+               </div>
+               </div>
+
+             </div>
+
+
+
+             <div class="row">
+                
+              <div class="input-group form-group">
+               <div class="col-md-4">
+                  <span><h6>Fecha Visita</h6></span>
+               </div>
+               <div class="col-md-8">
+                  <input type="date" id="fecha_visita" class="form-control">
+               </div>
+
+             </div>
+
+             </div>
+
+
+             <div class="row">
+                <div class="input-group form-group">
+               <div class="col-md-4">
+                 <span><h6>Hora Visita</h6></span>
+               </div>
+               <div class="col-md-8">
+                  <input type="time" id="hora_visita" class="form-control">
+               </div>
+              </div>
+             </div>
+
+
+             <div class="row">
+                <div class="input-group form-group">
+               <div class="col-md-4">
+                 <span><h6>Motivacion</h6></span>
+               </div>
+               <div class="col-md-8">
+                  <textarea style="border-right-style:none;border-left:none;border-top-style:none;" class="form-control" rows="3" placeholder="razon de la visita"></textarea>
+               </div>
+              </div>
+             </div>
+
+
+
+
+
+
+
+
+
+           </div>
+        </div>
+        </div>
+      </div>
 
 
 
@@ -472,13 +564,74 @@ $yo = $this->session->userdata();
 
  
  <script>
- 	var this_btn = document.getElementById('btn_colapsa');
 
+ var datos = null;
+
+ 	var this_btn = document.getElementById('btn_colapsa');
+  
   $(document).ready(function(){
+      
+      var div_ = document.getElementById('colapsa_form');
+
       $('#btn_buscar').click(function(){
-         click(this_btn);
+
+        var cedula = document.getElementById('campo_buscar').value;
+
+         $.ajax({
+               type:'POST',
+               url:"<?php echo site_url('Controlador/buscar_paciente');?>",
+               data:{ced:cedula}, 
+               success: function(result)
+               {
+                  if(result == "not found")
+                  {
+                    $('#message').html("<h6 style='color:orange;'>Cedula No Registrada</h6>");
+                     
+                      var message = document.getElementById('message');
+                      console.log(div_.style.display);
+                      document.getElementById('colapsa_form').style.display="none";
+                  }
+                   else
+                   {
+                      
+                      $('#message').html("");
+                       llenar_campos(JSON.parse(result));
+                       datos = JSON.parse(result);
+                       document.getElementById('colapsa_form').style.display="block";
+                        
+                   }
+               }       
+ 
+              });
+         
       });
   });
+
+
+
+ function llenar_campos(datos)
+{
+  
+  
+
+  var now = new Date();
+  var day = ("0" + now.getDate()).slice(-2);
+  var month = ("0" + (now.getMonth() + 1)).slice(-2);
+  var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
+
+  //$('#datePicker').val(today);
+
+ // console.log(today);
+
+  $('#nombre_p').val(datos[0]['nombre']);
+  $('#apellido_p').val(datos[0]['apellido']);
+  $('#nacimiento').val(datos[0]['fecha_nac']);
+  $('#fecha_consulta').val(today);
+  
+
+}
+
+
 
 
 function click(btn){
@@ -497,13 +650,13 @@ function pay_method(btn)
  	{
  		div_credito.style.display = "block";
  		div_efectivo.style.display = "none";
- 		console.log("tarjeta display");
+ 		//console.log("tarjeta display");
 
  	}else
  	{
  		div_credito.style.display = "none";
  		div_efectivo.style.display ="block";
- 		console.log("efectivo display");
+ 		//console.log("efectivo display");
  	}
 
 }
@@ -513,6 +666,8 @@ function pay_method(btn)
  {
  	var div_hidden = document.getElementById('calendario');
  	var div_pago = document.getElementById('pago');
+  var div_agenda = document.getElementById('agenda');
+
  
  	if(btn.id == "btn_pago")
  	{
@@ -521,7 +676,10 @@ function pay_method(btn)
  	}else if(btn.id == "btn_calendario")
  	{
  		colapsar(div_hidden);
- 	}
+ 	}else if(btn.id == "btn_agendar_visita")
+  {
+    colapsar(div_agenda);
+  }
 
  }
 
@@ -557,12 +715,85 @@ function pay_method(btn)
    
 
 
-   $(document).ready(function(){
-       
-       $('#calendario').fullCalendar({
+    
+  var citas = <?php echo json_encode($datos['citas'])?>;
+   
+  $(document).ready(function(){
 
-       });
-   });
+    $('#calendario').fullCalendar({
+          
+               header:{
+                  left:'prev,next today',
+                  center:'title',
+                  right:'month,agendaWeek,agendaDay'
+                },
+                selectable:true,
+                selectHelper:true,
+                editable:true,
+                eventLimit:true,
+
+                viewRender: function(view)
+                { 
+                  $('#calendario').fullCalendar('removeEvents');
+                  $('#calendario').fullCalendar('addEventSource',citas);
+
+                }
+                   
+    });
+
+   
+    $('#btn_guardar').click(function(){
+        var comment = document.getElementById('comment').value;
+        var error = "<h6 style='color:red'>Debes Agregar un comentario a la consulta.</h6>";
+
+         if(comment == "" || comment.length == 2)
+         {
+           $('#message').html(error);
+
+         }else
+         {
+          
+          var d = comment + "/"+datos[0]['id'];
+
+           $.ajax({
+              
+              type:'POST',
+              url:"<?php echo site_url('Controlador/guardar_consulta')?>",
+              data:{consulta:d},
+              success:function(result)
+              {
+
+                 console.log(result);
+               // $('#message').html(result);
+              }
+           });
+
+
+
+
+         }
+
+
+    });
+ 
+
+
+
+
+
+
+
+
+
+  })
+
+
+
+
+
+
+
+
 
 
  </script>
