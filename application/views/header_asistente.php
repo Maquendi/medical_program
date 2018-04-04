@@ -78,7 +78,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="#">Imprimir Reporte</a>
+          <a class="nav-link" href="#"><h5>Cumpleaños</h5></a>
         </li>
          <li class="nav-item">
            <a class="nav-link" href="<?php echo base_url("index.php/Controlador/entrar") ?>"><h5>Ir a Inicio</h5></a>
@@ -90,7 +90,7 @@
    <div class="col-sm-3">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-          <a class="nav-link" href="#">Agregar Paciente <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="#">Agregar Paciente<span class="sr-only">(current)</span></a>
         </li>
 
         <li class="nav-item">

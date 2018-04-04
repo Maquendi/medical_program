@@ -188,10 +188,13 @@
                        
             </div>
     			</div>
+         
+         <div class="col-md-1">
+           
+         </div>
 
 
-
-    			<div class="col-sm-4 col-md-4 col-xs-12">
+    			<div class="col-sm-5 col-md-5 col-xs-12">
     				<div class="jumbotron" style="padding:2px;">
 
     					<div id="carouselExampleIndicators" class="carousel slide"   data-ride="carousel">
@@ -278,9 +281,6 @@
   
    var citas = <?php echo json_encode($datos['citas'])?>;
    
-
-  
-  
   $(document).ready(function(){
 
     $('#calendario').fullCalendar({

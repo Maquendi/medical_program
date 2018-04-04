@@ -214,8 +214,7 @@ concat(c.fecha_cita,' ',c.hora_inicio) as start, concat(c.fecha_cita,' ',c.hora_
 
    public function getCita($id_cita)
    {
-     $sql = "select concat(d.nombre,' ',d.apellido) as title ,concat(p.nombre,' ',p.apellido) as Paciente,p.cedula,p.fecha_nac,p.email,p.tipo_sangre,p.genero,p.telefono,
-concat(c.fecha_cita,' ',c.hora_inicio) as start, concat(c.fecha_cita,' ',c.hora_final) as end,c.comentario,c.hora_registrada,c.id_cita,c.id_doctor,c.id_paciente,c.estado,c.id_asistente,dir.provincia,dir.calle,dir.ciudad from personal d inner join cita c on c.id_doctor=d.id inner join paciente p on p.id=c.id_paciente inner join direccion dir on dir.id_paciente = p.id where c.id_cita = {$id_cita}";
+     $sql = "select concat(d.nombre,' ',d.apellido) as title ,concat(p.nombre,' ',p.apellido) as Paciente,p.cedula,p.fecha_nac,p.email,p.tipo_sangre,p.genero,p.telefono, c.fecha_cita,c.hora_inicio, c.fecha_cita ,c.hora_final,c.comentario,c.hora_registrada,c.id_cita,c.id_doctor,c.id_paciente,c.estado,c.id_asistente,dir.provincia,dir.calle,dir.ciudad from personal d inner join cita c on c.id_doctor=d.id inner join paciente p on p.id=c.id_paciente inner join direccion dir on dir.id_paciente = p.id where c.id_cita = {$id_cita}";
 
 
        $result = $this->db->query($sql);

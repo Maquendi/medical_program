@@ -81,21 +81,11 @@
 
 
 
-<script type="text/javascript">
+<script src="<?php echo base_url("assets/js/head_admin.js")?>">
+
+
+
+
+
 	
-
-
-	$(document).ready(function(){
-
-		$('#toggle-menu').click(function(e){
-            
-            e.preventDefault();
-            $('#wrapper').toggleClass("menuDisplayed");
-		});
-
-	});
-
-
-
-
 </script>
